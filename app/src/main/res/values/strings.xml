@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PhyAndroidProject</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="tab_menu_alert">新闻</string>
+    <string name="tab_menu_profile">帖子</string>
+    <string name="tab_menu_pay">教学</string>
+    <string name="tab_menu_setting">我的</string>
+</resources>
