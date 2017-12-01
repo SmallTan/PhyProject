@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:id="@+id/new_item_all"
+    >
+    <RelativeLayout
+        android:id="@+id/new_item_subject"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/new__item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新闻标题"
+
+        android:textSize="15sp"
+        android:textColor="@color/bg_black"
+        />
+    <TextView
+        android:id="@+id/new_item_synopsis"
+        android:layout_below="@id/new__item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新闻第一排内容  四川师范大学成龙校区物理与电子工程学院电子信息工程2015级"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/new_item_synopsis"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发布人"
+                android:textSize="12sp"
+                android:id="@+id/new_item_author"
+                />
+            <TextView
+                android:layout_toRightOf="@id/new_item_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时间"
+                android:textSize="12sp"
+                android:id="@+id/new_item_time"
+                android:layout_marginLeft="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="12dp"
+                android:id="@+id/new_item_replay_number"
+                android:layout_alignParentRight="true"
+                />
+            <ImageView
+                android:id="@+id/new_item_replay_image"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_toLeftOf="@id/new_item_replay_number"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    <View
+        android:layout_below="@id/new_item_subject"
+        android:layout_width="365dp"
+        android:layout_height="2dp"
+
+        android:layout_marginBottom="3dp"
+        android:layout_alignParentRight="true"
+        />
+</RelativeLayout>

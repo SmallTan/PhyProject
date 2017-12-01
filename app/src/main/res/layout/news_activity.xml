@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</RelativeLayout>
+    android:layout_height="match_parent"
+    android:id="@+id/refreshLayout"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.ryane.banner_lib.AdPlayBanner
+                android:id="@+id/play_banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <RelativeLayout
+                android:id="@+id/news_message_relative"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/play_banner"
+                />
+        </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

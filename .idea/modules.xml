@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PhyProject.iml" filepath="$PROJECT_DIR$/PhyProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banner-lib/banner-lib.iml" filepath="$PROJECT_DIR$/banner-lib/banner-lib.iml" />
     </modules>
   </component>
 </project>

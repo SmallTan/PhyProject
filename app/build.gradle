@@ -20,6 +20,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
@@ -27,4 +30,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:25.2.0'
     implementation files('libs/httpclient-4.0.1.jar')
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.android.support:design:25.2.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    compile project(path: ':banner-lib')
+    implementation 'com.github.ryanlijianchang:AdPlayBanner:v0.2'
 }
