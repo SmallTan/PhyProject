@@ -1,4 +1,4 @@
-package app.ifox.com.phyandroidproject;
+package app.ifox.com.phyandroidproject.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import app.ifox.com.phyandroidproject.R;
 import app.ifox.com.phyandroidproject.model.New;
 
 /**
@@ -18,17 +21,17 @@ import app.ifox.com.phyandroidproject.model.New;
 public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewView>{
 
     private Context context;
-    private New[] aNew;
+    private List<New> aNew;
     private String newTitleText;
     private String newSynopsisText;
     private String newAuthorText;
     private int newReplayNum;
 
-    public NewAdapter(Context context,New[] aNew){
+    public NewAdapter(Context context,List<New> aNew){
         this.context = context;
         this.aNew = aNew;
     }
-    public NewAdapter(Context context,New[] aNew,String newTitleText,String newSynopsisText,String newAuthorText,int newReplayNum){
+    public NewAdapter(Context context,List<New> aNew,String newTitleText,String newSynopsisText,String newAuthorText,int newReplayNum){
         this.aNew = aNew;
         this.context =context;
         this.newTitleText = newTitleText;
@@ -52,11 +55,11 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewView>{
         TextView newTime = view.findViewById(R.id.new_item_time);
         TextView newReplay = view.findViewById(R.id.new_item_replay_number);
         if (aNew != null) {
-            newTitle.setText(aNew[position].getTitle());
-            newSynopsis.setText(aNew[position].getSynopsis());
-            newAuthor.setText(aNew[position].getHtmlContent());
-            newTime.setText(aNew[position].getTime());
-            newReplay.setText(aNew[position].getReplayNum());
+            newTitle.setText(aNew.get(position).getTitle());
+            newSynopsis.setText(aNew.get(position).getSynopsis());
+            newAuthor.setText(aNew.get(position).getAuthor());
+            newTime.setText(aNew.get(position).getTime());
+            newReplay.setText("" +aNew.get(position).getReplayNum());
         }
         newItemAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +71,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewView>{
 
     @Override
     public int getItemCount() {
-        return aNew.length;
+        return aNew.size();
     }
 
     public static class NewView extends RecyclerView.ViewHolder{

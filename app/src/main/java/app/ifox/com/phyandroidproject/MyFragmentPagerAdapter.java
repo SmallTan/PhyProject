@@ -1,5 +1,6 @@
 package app.ifox.com.phyandroidproject;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -17,9 +18,9 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     private MyFragment4 myFragment4 = null;
 
 
-    public MyFragmentPagerAdapter(FragmentManager fm) {
+    public MyFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
-        myFragment1 = new MyFragment1();
+        myFragment1 = new MyFragment1(context);
         myFragment2 = new MyFragment2();
         myFragment3 = new MyFragment3();
         myFragment4 = new MyFragment4();

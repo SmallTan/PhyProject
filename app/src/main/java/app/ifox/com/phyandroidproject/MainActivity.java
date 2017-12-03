@@ -1,5 +1,6 @@
 package app.ifox.com.phyandroidproject;
 
+import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private RadioButton rb_better;
     private RadioButton rb_setting;
     private ViewPager vpager;
-
+    private Context context = MainActivity.this;
     private MyFragmentPagerAdapter mAdapter;
 
     //几个代表页面的常量
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
+        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),MainActivity.this);
         bindViews();
         rb_channel.setChecked(true);
     }
