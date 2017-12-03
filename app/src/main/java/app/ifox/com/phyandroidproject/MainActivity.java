@@ -58,15 +58,19 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         switch (checkedId) {
             case R.id.rb_channel:
                 vpager.setCurrentItem(PAGE_ONE);
+                txt_topbar.setText("新闻");
                 break;
             case R.id.rb_message:
                 vpager.setCurrentItem(PAGE_TWO);
+                txt_topbar.setText("帖子");
                 break;
             case R.id.rb_better:
                 vpager.setCurrentItem(PAGE_THREE);
+                txt_topbar.setText("教学");
                 break;
             case R.id.rb_setting:
                 vpager.setCurrentItem(PAGE_FOUR);
+                txt_topbar.setText("我的");
                 break;
         }
     }

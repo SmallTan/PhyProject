@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ import app.ifox.com.phyandroidproject.model.New;
  * Created by 13118467271 on 2017/11/30.
  */
 
-public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewView>{
+public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewView> {
 
     private Context context;
     private List<New> aNew;
@@ -26,59 +25,91 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewView>{
     private String newSynopsisText;
     private String newAuthorText;
     private int newReplayNum;
+    private OnItemClickListener mOnItemClickListener;
 
-    public NewAdapter(Context context,List<New> aNew){
+    public NewAdapter(Context context, List<New> aNew) {
         this.context = context;
         this.aNew = aNew;
     }
-    public NewAdapter(Context context,List<New> aNew,String newTitleText,String newSynopsisText,String newAuthorText,int newReplayNum){
+
+    public NewAdapter(Context context, List<New> aNew, String newTitleText, String newSynopsisText, String newAuthorText, int newReplayNum) {
         this.aNew = aNew;
-        this.context =context;
+        this.context = context;
         this.newTitleText = newTitleText;
         this.newAuthorText = newAuthorText;
         this.newSynopsisText = newSynopsisText;
         this.newReplayNum = newReplayNum;
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+
+        void onItemLongClick(View view, int position);
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
+
     @Override
     public NewView onCreateViewHolder(ViewGroup parent, int viewType) {
-        NewView newViewHolder = new NewView(LayoutInflater.from(context).inflate(R.layout.news_item,parent,false));
+        NewView newViewHolder = new NewView(LayoutInflater.from(context).inflate(R.layout.news_item, parent, false));
         return newViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(NewView holder, final int position) {
-        final View view = holder.mView;
-        RelativeLayout newItemAll  = view.findViewById(R.id.new_item_all);//整体点击的事件
-        TextView newTitle = view.findViewById(R.id.new__item_title);
-        TextView newSynopsis = view.findViewById(R.id.new_item_synopsis);
-        TextView newAuthor = view.findViewById(R.id.new_item_author);
-        TextView newTime = view.findViewById(R.id.new_item_time);
-        TextView newReplay = view.findViewById(R.id.new_item_replay_number);
+    public void onBindViewHolder(final NewView holder, final int position) {
         if (aNew != null) {
-            newTitle.setText(aNew.get(position).getTitle());
-            newSynopsis.setText(aNew.get(position).getSynopsis());
-            newAuthor.setText(aNew.get(position).getAuthor());
-            newTime.setText(aNew.get(position).getTime());
-            newReplay.setText("" +aNew.get(position).getReplayNum());
+            holder.newTitle.setText(aNew.get(position).getTitle());
+            holder.newSynopsis.setText(aNew.get(position).getSynopsis());
+            holder.newAuthor.setText(aNew.get(position).getAuthor());
+            holder.newTime.setText(aNew.get(position).getTime());
+            holder.newReplay.setText("" + aNew.get(position).getReplayNum());
         }
-        newItemAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "第" + position + "条新闻", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (mOnItemClickListener != null) {
+            holder.newItemAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = holder.getLayoutPosition();
+                    mOnItemClickListener.onItemClick(holder.newItemAll, pos);
+                }
+            });
+            holder.newItemAll.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int pos = holder.getLayoutPosition();
+                    mOnItemClickListener.onItemLongClick(holder.newItemAll, pos);
+                    return false;
+                }
+            });
+        }
     }
-
     @Override
-    public int getItemCount() {
+    public int getItemCount () {
         return aNew.size();
     }
-
-    public static class NewView extends RecyclerView.ViewHolder{
+    class NewView extends RecyclerView.ViewHolder{
         public View mView;
+        RelativeLayout newItemAll;
+        TextView newTitle;
+        TextView newSynopsis;
+        TextView newAuthor;
+        TextView newTime;
+        TextView newReplay;
         public NewView(View itemView) {
             super(itemView);
             mView = itemView;
+            newItemAll  = mView.findViewById(R.id.new_item_all);//整体点击的事件
+            newTitle = mView.findViewById(R.id.new__item_title);
+            newSynopsis = mView.findViewById(R.id.new_item_synopsis);
+            newAuthor = mView.findViewById(R.id.new_item_author);
+            newTime = mView.findViewById(R.id.new_item_time);
+            newReplay = mView.findViewById(R.id.new_item_replay_number);
         }
     }
 }
+
+
+
+

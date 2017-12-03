@@ -2,6 +2,7 @@ package app.ifox.com.phyandroidproject;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.ifox.com.phyandroidproject.Adapter.NewAdapter;
+import app.ifox.com.phyandroidproject.NewActivity.NewCompleteIntroduceActivity;
 import app.ifox.com.phyandroidproject.model.New;
 
 import static com.ryane.banner_lib.AdPlayBanner.ImageLoaderType.GLIDE;
@@ -140,7 +142,24 @@ public class MyFragment1 extends Fragment {
         newRecycle.addItemDecoration(new DividerItemDecoration(context,DividerItemDecoration.VERTICAL));
         newRecycle.setItemAnimator(new DefaultItemAnimator());
         NewAdapter newAdapter = new NewAdapter(context,newList);
+        setLislen(newAdapter);
         newRecycle.setAdapter(newAdapter);
 
+    }
+
+    private void setLislen(NewAdapter newAdapter) {
+        newAdapter.setOnItemClickListener(new NewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getContext(), NewCompleteIntroduceActivity.class);
+                intent.putExtra("url","http://news.ifeng.com/a/20171203/53804729_0.shtml?_zbs_baidu_dk");
+                startActivity(intent);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
     }
 }

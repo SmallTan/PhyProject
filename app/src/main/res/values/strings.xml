@@ -9,4 +9,7 @@
     <string name="tab_menu_profile">帖子</string>
     <string name="tab_menu_pay">教学</string>
     <string name="tab_menu_setting">我的</string>
+    <string name="new_introduce">新闻详情</string>
+    <string name="new_comment_hint">发表评论</string>
+    <string name="new_send">发送</string>
 </resources>
