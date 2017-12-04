@@ -36,4 +36,5 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
     compile project(path: ':banner-lib')
     implementation 'com.github.ryanlijianchang:AdPlayBanner:v0.2'
+    implementation files('libs/universal-image-loader-1.9.4-with-sources.jar')
 }
